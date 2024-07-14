@@ -1,0 +1,35 @@
+
+<div (click)="goBack()" link>🏠GO-BACK</div>
+<div class="flex">
+    <div class="percent50">
+        <img [src]="detail?.imageUrl">
+    </div>
+    <div class="flex flex-column">
+        <div class="flex">
+            <div>
+                <h3>{{detail?.name}}</h3>
+            </div>
+            <div>
+                <span [id]="'star-'+detail.id" class="icon-star" [ngClass]="{'active':cockTailSelected(detail)}" (click)="FavouriteToggle(detail)"></span>
+            </div>
+        </div>
+        <div class="flex">
+            <div><h4>Type:</h4></div>
+            <div><h6>{{detail?.isAlcoholic ? 'Alcohalic' : 'Non alcohalic'}}</h6></div>
+        </div>
+        <div class="flex">
+            <div><h4>Ingredients:</h4></div>
+            <div class="flex-column">
+                <ul *ngFor="let item of detail?.ingredients">
+                    <li>{{item}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex">
+            <div><h4>Instructions:</h4></div>
+            <div>{{detail?.instructions}}</div>
+        </div>
+        
+        <!-- <div class="flex-wrap"><h6>{{detail?.ingredients.join(' | ')}}</h6></div> -->
+    </div> 
+</div>

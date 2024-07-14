@@ -1,0 +1,27 @@
+
+<div class="flex flex-column p-25 percent50" >
+    <h3>FILTERS</h3>
+    <input placeholder="Cocktail name" (input)="getFilteredItems($event)"/>
+</div>
+
+<div class="container flex flex-column flex-wrap">
+    <div class="containwidth" *ngFor="let item of filteredCockTails">
+        <div class="flex">
+            <img [src]="item?.imageUrl" style="width: 20%">
+            <div class="flex flex-column">
+                <div class="flex">
+                    <a [routerLink]="['/details',item.id]">
+                        <h3>{{item?.name}}</h3>
+                    </a>
+                    <span [id]="'star-'+item.id" class="icon-star" [ngClass]="{'active':cockTailSelected(item)}" (click)="FavouriteToggle(item)"></span>
+                </div>
+                <div><h6>{{item?.isAlcoholic ? 'Alcohalic' : 'Non alcohalic'}}</h6></div>
+                <div *ngIf="item?.ingredients">
+                    <div class="flex-wrap"><h6>{{concatArray(item.ingredients)}}</h6></div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+
